@@ -1,7 +1,29 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'rest-client'
+require 'json'
+require 'byebug'
+
+Recipe.destroy_all
+
+recipe_key = Rails.application.credentials.spoontacular[:api_key]
+response = RestClient.get("https://api.spoonacular.com/recipes/random?number=500&apiKey=#{recipe_key}")
+recipes = JSON.parse(response)
+
+recipe_array = recipes['recipes']
+
+recipe_array.each do |recipe|
+
+  title = recipe['title']
+  rating = recipe['aggregateLikes']
+  cook_time = recipe['readyInMinutes']
+  instructions = recipe['instructions']
+  picture = recipe['image']
+  calories = recipe['healthScore']
+  gluten_free = recipe['glutenFree']
+  vegetarian = recipe['vegetarian']
+  vegan = recipe['vegan']
+  dairy_free = recipe['dairyFree']
+
+  Recipe.create(title: title, rating: rating, cook_time: cook_time, instructions: instructions, picture: picture, calories: calories, gluten_free: gluten_free, vegetarian: vegetarian, vegan: vegan, dairy_free: dairy_free)
+
+end
+0
