@@ -3,6 +3,7 @@ require 'json'
 require 'byebug'
 
 Recipe.destroy_all
+Ingredient.destroy_all
 
 recipe_key = Rails.application.credentials.spoontacular[:api_key]
 response = RestClient.get("https://api.spoonacular.com/recipes/random?number=500&apiKey=#{recipe_key}")
@@ -25,5 +26,15 @@ recipe_array.each do |recipe|
 
   Recipe.create(title: title, rating: rating, cook_time: cook_time, instructions: instructions, picture: picture, calories: calories, gluten_free: gluten_free, vegetarian: vegetarian, vegan: vegan, dairy_free: dairy_free)
 
+end
+
+recipe_array.each do |recipe|
+  recipe['extendedIngredients'].each do |ingredient|
+    name = ingredient['name']
+    amount = ingredient['amount']
+    unit = ingredient['unit']
+
+Ingredient.create(name: name, amount: amount, unit: unit)
+end
 end
 0
