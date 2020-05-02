@@ -7,7 +7,7 @@ Ingredient.destroy_all
 RecipeIngredient.destroy_all
 
 recipe_key = Rails.application.credentials.spoontacular[:api_key]
-response = RestClient.get("https://api.spoonacular.com/recipes/random?number=10&apiKey=#{recipe_key}")
+response = RestClient.get("https://api.spoonacular.com/recipes/random?number=1&apiKey=#{recipe_key}")
 recipes = JSON.parse(response)
 
 recipe_array = recipes['recipes']
