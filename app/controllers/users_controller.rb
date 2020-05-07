@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    byebug
+    user = User.find_or_create_by(first_name: params[:firstName], last_name: params[:lastName], user_name: params[:userName], password: params[:password])
+    render json: { user: user }
   end
 end
