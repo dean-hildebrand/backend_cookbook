@@ -2,12 +2,12 @@ class UsersController < ApplicationController
 
   def index
     user = User.all
-    render json: user.to_json()
+    render json: user.map { |user| {user: user, favorites: user.recipe} }
   end
 
   def show
     user = User.find(params[:id])
-    render json: user.to_json()
+    render json: { user: user, favorites: user.recipe }
   end
 
   def create
