@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_165953) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
-    t.integer "rating"
     t.integer "review_id"
     t.integer "cook_time"
     t.text "instructions"
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_165953) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "rating"
     t.text "review"
     t.integer "recipe_id"
     t.datetime "created_at", precision: 6, null: false
