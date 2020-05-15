@@ -25,6 +25,9 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-
+    user_id = params[:user_id]
+    recipe_id = params[:recipe_id]
+    favRecipe = Favorite.find_by(:user_id => user_id, :recipe_id => recipe_id)
+    favRecipe.destroy
   end
 end
