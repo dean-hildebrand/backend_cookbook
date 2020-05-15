@@ -23,4 +23,8 @@ class RecipesController < ApplicationController
     favorite_recipe = Favorite.find_or_create_by(user_id: params[:user_id], recipe_id: params[:recipe_id])
     render json: favorite_recipe.recipe
   end
+
+  def destroy
+
+  end
 end
