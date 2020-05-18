@@ -4,7 +4,7 @@ resources :users, only: [:index, :show, :create]
 
 post '/login', to: 'users#login'
 
-resources :reviews, only: [:index, :destroy, :create]
+resources :reviews
 
 
 resources :recipes
