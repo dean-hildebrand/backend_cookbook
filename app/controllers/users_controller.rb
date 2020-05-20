@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(first_name: params[:firstname], last_name: params[:lastname], username: params[:username], password: params[:password])
     if user.valid?
-       render json: { user: user,  favorites: user.recipes }, status: :created
+       render json: { user: user,  favorites: user.recipes , status: :created }
     else
        render json: { error: "Failed to created user"}, status: :not_acceptable
     end
@@ -26,13 +26,13 @@ class UsersController < ApplicationController
 
 
   def login
+    # byebug
     user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
-    render json: { user: user, favorites: user.recipes },
-    successful: true
+    render json: { user: user, favorites: user.recipes,
+    successful: true }
     # user: user,
     # token: encode("id": user.id)
-
       else
   render json: { message: "Incorrect username or password",
   successful: false
