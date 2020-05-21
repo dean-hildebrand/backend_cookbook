@@ -26,12 +26,11 @@ class UsersController < ApplicationController
 
 
   def login
-    # byebug
     user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
     render json: { user: user, favorites: user.recipes,
     successful: true }
-    # user: user,
+    # data: user,
     # token: encode("id": user.id)
       else
   render json: { message: "Incorrect username or password",
