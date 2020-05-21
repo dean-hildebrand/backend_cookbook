@@ -4,8 +4,9 @@ resources :users, only: [:index, :show, :create]
 
 post '/login', to: 'users#login'
 
-resources :reviews, only: [:index, :destroy, :create]
+resources :reviews
 
+post '/recipes/:recipe_id', to: 'reviews#create'
 
 resources :recipes
 post '/favoriterecipe', to: 'recipes#favorite'

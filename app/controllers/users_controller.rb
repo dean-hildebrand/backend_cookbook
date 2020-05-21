@@ -1,19 +1,16 @@
-class UsersController < ApplicationController
 
-  def index
-    user = User.all
-    render json: user
-  end
 
-  def show
-    user = User.find(params[:id])
-    render json: { user: user, favorites: user.recipes }
-  end
+  class UsersController < ApplicationController
+      def index
+          user =User.all
+          render json: user.to_json(
+              {:except => [:created_at, :updated_at] })
+      end
+      def show
+          user = User.find(params[:id])
+          render json: {user: user, favorites: user.recipes}
+      end
 
-  # def create
-  #   user = User.find_or_create_by( username: params[:username], password: params[:password])
-  #   render json: { user: user,  favorites: user.recipes }
-  # end
 
   def create
     user = User.create(first_name: params[:firstname], last_name: params[:lastname], username: params[:username], password: params[:password])
@@ -39,4 +36,4 @@ class UsersController < ApplicationController
 }
       end
   end
-end
+  end
