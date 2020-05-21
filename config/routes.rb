@@ -6,6 +6,7 @@ post '/login', to: 'users#login'
 
 resources :reviews
 
+post '/recipes/:recipe_id', to: 'reviews#create'
 
 resources :recipes
 post '/favoriterecipe', to: 'recipes#favorite'
