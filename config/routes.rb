@@ -6,6 +6,8 @@ post '/login', to: 'users#login'
 
 resources :reviews
 
+delete '/recipes/:recipe_id', to: 'reviews#destroy'
+
 post '/recipes/:recipe_id', to: 'reviews#create'
 
 resources :recipes
