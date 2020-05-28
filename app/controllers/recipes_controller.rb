@@ -10,13 +10,20 @@ class RecipesController < ApplicationController
   def show
     recipe = Recipe.find(params[:id])
     render json: recipe.to_json(
-      {:except => [:created_at, :updated_at], :include => [:reviews, :users]})
+      {:except => [:created_at, :updated_at], :include => [:ingredients, :reviews, :users]})
   end
 
 # need to add user and ingredients to the create method for a new recipe
   def create
-    recipe = Recipe.find_or_create_by(title: params[:title], cook_time: params[:cookTime], instructions: params[:instructions], picture: params[:picture], gluten_free: params[:gluten], vegetarian: params[:vegetarian], dairy_free: params[:dairy], vegan: params[:vegan])
-    render json: recipe
+    byebug
+    recipe = Recipe.create(title: params[:title], cook_time: params[:cookTime], instructions: params[:instructions], picture: params[:picture], gluten_free: params[:gluten], vegetarian: params[:vegetarian], dairy_free: params[:dairy], vegan: params[:vegan])
+    recipe.ingredient_ids = params[:ingredients].map {|ing| ing[:id]}
+    render json: {recipe: recipe}
+  end
+
+  def recipe_ingredient
+    recipe_ingredient = RecipeIngredients.create(ingredient_id: params[:ingredient_id] , recipe_id: params[:recipe_id])
+    render json: recipe_ingredient.ingredient
   end
 
   def favorite
