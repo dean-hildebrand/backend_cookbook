@@ -4,7 +4,6 @@ class CreateIngredients < ActiveRecord::Migration[6.0]
       t.string :name
       t.float :amount
       t.string :unit
-
       t.timestamps
     end
   end
