@@ -16,4 +16,6 @@ delete '/favoriterecipe/:user_id/:recipe_id', to: 'recipes#destroy'
 
 resources :ingredients
 
+# auth localStorage route
+get '/profile', to: "users#profile"
 end

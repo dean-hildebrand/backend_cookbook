@@ -6,7 +6,6 @@ class IngredientsController < ApplicationController
       {:except => [:created_at, :updated_at]}
     )
 
-    # show page
-    # created
+    
   end
 end

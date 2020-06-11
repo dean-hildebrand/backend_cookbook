@@ -6,6 +6,7 @@
           render json: user.to_json(
               {:except => [:created_at, :updated_at] })
       end
+
       def show
           user = User.find(params[:id])
           render json: {user: user, favorites: user.recipes}
@@ -22,18 +23,27 @@
   end
 
 
+
   def login
-    # byebug
     user = User.find_by(username: params[:username])
       if user && user.authenticate(params[:password])
     render json: { user: user, favorites: user.recipes,
-    successful: true }
-    # user: user,
-    # token: encode("id": user.id)
-      else
+    successful: true,
+    data: user,
+    token: encode("id": user.id)
+    }  else
   render json: { message: "Incorrect username or password",
   successful: false
 }
       end
   end
+
+
+# localStorage auth method
+  def profile
+    token = request.headers["Authentication"]
+    user = User.find(decode(token)["id"])
+    render json: {user: user, favorites: user.recipes}
+  end
+
   end
