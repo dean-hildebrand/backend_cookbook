@@ -2,7 +2,7 @@
 
   class UsersController < ApplicationController
 
-    before_action :update, only: [:edit]
+    # before_action :update, only: [:edit]
 
 
       def index
@@ -19,9 +19,6 @@
     def edit
     end
 
-    def update
-      byebug
-    end
 
 
 
@@ -33,6 +30,16 @@
        render json: { error: "Failed to created user"}, status: :not_acceptable
     end
   end
+
+
+    def update
+      # byebug
+      user = User.find(params[:id])
+      user.bio = params[:bio]
+      user.picture = params[:picture]
+      user.save
+      render json: {user: user, favorites: user.recipes}
+    end
 
 
 
