@@ -1,6 +1,10 @@
 
 
   class UsersController < ApplicationController
+
+    before_action :update, only: [:edit]
+
+
       def index
           user =User.all
           render json: user.to_json(
@@ -11,6 +15,14 @@
           user = User.find(params[:id])
           render json: {user: user, favorites: user.recipes}
       end
+
+    def edit
+    end
+
+    def update
+      byebug
+    end
+
 
 
   def create

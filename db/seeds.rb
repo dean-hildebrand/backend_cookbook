@@ -13,7 +13,6 @@ recipes = JSON.parse(response)
 recipe_array = recipes['recipes']
 
 recipe_array.each do |recipe|
-
   title = recipe['title']
   cook_time = recipe['readyInMinutes']
   instructions = recipe['instructions']
