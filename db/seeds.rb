@@ -334,6 +334,7 @@ mostPopularFoods = [
 "duck fat",
 "dutch process cocoa powder",
 "edamame",
+"egg, whole",
 "egg substitute",
 "egg vermicelli",
 "egg whites",
