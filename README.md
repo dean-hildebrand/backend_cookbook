@@ -1,7 +1,7 @@
 <h2>COOKBOOK</h2>
 This is an application that lets you explore a lot of recipes, post your own and share them with other users. You can favorite them and rate them. You can also delete your reviews and delete the recipes from your list of favorites. Enjoy!
 ***
-You will need to  clone frontend application repo in order to explore the app.(<a href="https://github.com/spike0161/backend_cookbook">CookBook Frontend</a>)
+You will need to  clone frontend application repo in order to explore the app.(<a href="https://github.com/spike0161/backend_cookbook">CookBook Backend</a>)
 ***
 <h4>Database Setup</h4>
 Run <b>bundle install</b> to make sure everything is up to date. This app runs on Postgresql.</br>
