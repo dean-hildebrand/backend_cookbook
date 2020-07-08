@@ -1,5 +1,5 @@
 <h2>COOKBOOK</h2>
-This is application that lets you explore a lot of recipes, post your own and share them with other users. You can favorite them and rate them. You can also delete your reviews and delete the recipes from your list of favorites. Enjoy!
+This is an application that lets you explore a lot of recipes, post your own and share them with other users. You can favorite them and rate them. You can also delete your reviews and delete the recipes from your list of favorites. Enjoy!
 ***
 You will need to  clone frontend application repo in order to explore the app.(<a href="https://github.com/spike0161/backend_cookbook">CookBook Frontend</a>)
 ***
